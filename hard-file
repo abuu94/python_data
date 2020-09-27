@@ -1,0 +1,25 @@
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+hand = open(name)
+
+#hand=open("mbox-short.txt")
+#count=0
+
+di=dict()
+for line in hand:
+    lin=line.strip()
+    if not line.startswith("From:"):continue
+    else:   
+        wds=lin.split()
+        wds=wds[1]
+        di[wds]=di.get(wds,0)+1
+        
+#print(di)
+largest=-1
+theword=None
+
+for k,d in di.items():
+    if largest == -1 or d>theword:
+        theword=d
+        largest=k     
+print(largest,theword)
