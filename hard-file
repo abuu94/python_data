@@ -40,3 +40,23 @@ for line in open_file :
             file_dict[hours]=file_dict.get(hours,0)+1
 for k,v in sorted (file_dict.items()) :
     print(k,v)
+
+----------------------------------------------------------
+name = input("Enter file:")
+if len(name) < 1 : name = "mbox-short.txt"
+hand = open(name)
+
+#name = input("Enter file:")
+#hand=open(name)
+di={}
+for l in hand :
+    l=l.rstrip()
+    if l.startswith("From ") : 
+            wds=l.split()
+            t=wds[5]
+            hours=t[:2]
+            
+            di[hours]=di.get(hours,0)+1
+
+for k,v in sorted (di.items()) :
+    print(k,v)
