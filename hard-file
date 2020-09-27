@@ -1,3 +1,5 @@
+
+This is concern on files: it was hard
 name = input("Enter file:")
 if len(name) < 1 : name = "mbox-short.txt"
 hand = open(name)
@@ -23,3 +25,18 @@ for k,d in di.items():
         theword=d
         largest=k     
 print(largest,theword)
+
+
+This is concern on tuples: it was hard
+name = input("Enter file:")
+open_file=open(name)
+file_dict={}
+for line in open_file :
+    line=line.rstrip()
+    if line.startswith("From ") : 
+            words=line.split()
+            time=words[5]
+            hours=time[:2]
+            file_dict[hours]=file_dict.get(hours,0)+1
+for k,v in sorted (file_dict.items()) :
+    print(k,v)
